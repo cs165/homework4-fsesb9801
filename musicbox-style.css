@@ -1,3 +1,29 @@
 /*
 TODO(you): Write any additional styles you need here.
 */
+#gif-view{
+	width:100vw;
+	height:calc(100vh - 70px);
+	background-color:#b1b1b1;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	background-image:url('./images/placeholder.gif');
+}
+#buttonContainer{
+	width:100vw;
+	height:70px;
+	background-color:#ffffff;
+	display:flex;
+}
+#button{
+	width:60px;
+	height:60px;
+	display:inline-flex;
+	margin:auto;
+}
+#ytinfo{
+	display:inline-flex;
+	text-decoration:none;
+	padding-top:45px;
+}
