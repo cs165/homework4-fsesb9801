@@ -8,7 +8,7 @@ class MenuScreen {
 		
 		this.elem=menuElem
 		//create song list
-		const LIST_URL="http://cs165.github.io/homework4-fsesb9801/online/songs.json"
+		const LIST_URL="https://cs165.github.io/homework4-fsesb9801/online/songs.json"
 		this.jsonData=undefined
 		this.jsonKeys=undefined
 		this.selector=document.getElementById('song-selector')
