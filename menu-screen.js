@@ -18,7 +18,7 @@ class MenuScreen {
 		op.innerText='---Select song---'
 		this.selector.appendChild(op)
 		this.optCount=0
-		fetch(LIST_URL).then(response=>{return response.json()}).then(json=>{
+		fetch(LIST_URL).then(response=>{if(response.ok)return response.json()}).then(json=>{
 			this.jsonData=json
 			this.jsonKeys=Object.keys(this.jsonData)
 			this.jsonKeys.forEach(key=>{
@@ -59,5 +59,12 @@ class MenuScreen {
 			return this.jsonData[this.jsonKeys[this.selValue]].songUrl
 		else
 			return null
+	}
+	hasYTinfo()
+	{
+		return this.jsonData[this.jsonKeys[this.selValue]].ytUrl
+	}
+	showError=()=>{
+		document.getElementById('error').classList.remove('inactive')
 	}
 }
