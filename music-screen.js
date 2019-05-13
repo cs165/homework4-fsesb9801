@@ -8,6 +8,7 @@
 //
 // See HW4 writeup for more hints and details.
 class MusicScreen {
+	im=undefined
 	constructor(playerElem) {
 		// TODO(you): Implement the constructor and add fields as necessary.
 		this.elem=playerElem
@@ -22,6 +23,10 @@ class MusicScreen {
 		this.elem.addEventListener('pausePlay',this.changeState)
 		this.ytElem.addEventListener('click',this.ALWAYS_STOP)
 		this.elem.addEventListener('loadComplete',this.complete)
+		
+		//preload loading gif
+		this.im=new Image(0,0)
+		this.im.src='./images/placeholder.gif'
 	}
 	
 	// TODO(you): Add methods as necessary.
