@@ -12,13 +12,12 @@ class App {
 		this.musicScreen=new MusicScreen(playerElem)
 		this.giphyDown=false
 		
-		const IGNORE_API_CHECK=false
-		//set this to true if giphy api key exceed limit
+		//use app.unlockInput() when giphy api key exceed limit
 		//and you want to check input field and random gif theme
 		
 		
 		//test giphy api
-		fetch('https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=giphy&limit=1').then(response=>{if(response.ok)console.log('api ok')}).catch(reason=>{if(!IGNORE_API_CHECK)this.lockInput()})
+		fetch('https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=giphy&limit=1').then(response=>{if(response.ok)console.log('api ok')}).catch(reason=>{this.lockInput();console.warn('use app.unlockInput() to unlock textfield(but still use default gif)')})
 		this.url=undefined
 		this.gif_set=undefined
 		this.jsonObj=undefined
@@ -73,5 +72,11 @@ class App {
 		e.value=''
 		e.placeholder='🔒 Unable to use GIPHY API,use default GIFs.'
 		this.giphyDown=true
+	}
+	unlockInput()
+	{
+		let e=document.getElementById('query-input')
+		e.disabled=false
+		e.placeholder='Enter a word or phrase'
 	}
 }
