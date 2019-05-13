@@ -20,8 +20,8 @@ class MusicScreen {
 		const buttonElem=document.getElementById('button')
 		this.button=new PlayButton(buttonElem)
 		this.elem.addEventListener('pausePlay',this.changeState)
-		
-		this.gifList
+		this.ytElem.addEventListener('click',this.ALWAYS_STOP)
+		this.elem.addEventListener('loadComplete',this.complete)
 	}
 	
 	// TODO(you): Add methods as necessary.
@@ -37,10 +37,12 @@ class MusicScreen {
 		document.querySelector('#alignblock').style.width=ytElemWidth+'px'
 	}
 	init=(url,gif)=>{
-		this.gifList=gif
+		let urls=[]
+		gif.data.forEach(item=>urls.push(item.images.downsized.url))
+		this.gifDisplay.loadGifs(urls)
 		this.player=new AudioPlayer()
 		this.player.setSong(url)
-		this.player.setKickCallback(this.kickHandler)
+		this.player.setKickCallback(this.gifDisplay.newGif)
 	}
 	setYTinfo=url=>{
 		if(url)
@@ -60,10 +62,12 @@ class MusicScreen {
 			console.log('pause')
 		}
 	}
-	load=()=>{
-		console.log('load gif')
+	ALWAYS_STOP=()=>{
+		if(this.button.playing)
+			this.button.mode()
 	}
-	kickHandler=()=>{
-		console.log('kick')
+	complete=()=>{
+		document.getElementById('loadingScreen').classList.add('inactive')
+		this.gifDisplay.newGif()
 	}
 }

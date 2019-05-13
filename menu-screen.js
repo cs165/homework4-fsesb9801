@@ -38,7 +38,7 @@ class MenuScreen {
 			this.selValue=this.selector.value
 			if(this.selValue==='-1')
 				this.input.value=''
-			else
+			else if(this.input.disabled===false)
 				this.input.value=this.GIF_THEME[Math.floor(Math.random()*(this.GIF_THEME.length-1))]
 		}
 	}
@@ -64,7 +64,8 @@ class MenuScreen {
 	{
 		return this.jsonData[this.jsonKeys[this.selValue]].ytUrl
 	}
-	showError=()=>{
+	showError()
+	{
 		document.getElementById('error').classList.remove('inactive')
 	}
 }
