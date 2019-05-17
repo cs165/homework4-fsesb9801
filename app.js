@@ -17,7 +17,9 @@ class App {
 		
 		
 		//test giphy api
-		fetch('https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=giphy&limit=1').then(response=>{if(response.ok)console.log('api ok')}).catch(reason=>{this.lockInput();console.warn('use app.unlockInput() to unlock textfield(but still use default gif)')})
+		
+		//fetch('https://api.giphy.com/v1/gifs/search?api_key=5aqaX1v6l93gY2s9ymhVveQetRb8cm1C&q=giphy&limit=1').then(response=>{if(response.ok)console.log('api ok')}).catch(reason=>{this.lockInput();console.warn('use app.unlockInput() to unlock textfield(but still use default gif)')})
+		//05.18 remove availability check
 		this.url=undefined
 		this.gif_set=undefined
 		this.jsonObj=undefined
@@ -34,7 +36,7 @@ class App {
 			if(!this.giphyDown)
 			{
 			//request gif list
-				fetch('https://api.giphy.com/v1/gifs/search?q='+encodeURIComponent(this.gif_set)+'&rating=g&api_key=dc6zaTOxFJmzC&limit=25').then(response=>{if(response.ok)return response.json()}).then(json=>{
+				fetch('https://api.giphy.com/v1/gifs/search?q='+encodeURIComponent(this.gif_set)+'&rating=g&api_key=5aqaX1v6l93gY2s9ymhVveQetRb8cm1C&limit=25').then(response=>{if(response.ok)return response.json()}).then(json=>{
 					this.gif_set=json
 					if(this.gif_set.pagination.count<2)
 					{
